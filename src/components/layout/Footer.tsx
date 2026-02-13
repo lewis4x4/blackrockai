@@ -1,7 +1,8 @@
-import { Linkedin, Github, Twitter } from 'lucide-react';
+import { Linkedin, Github, Mail } from 'lucide-react';
 
 const NAV_ITEMS = [
   { label: 'What We Build', href: '#services' },
+  { label: 'How We Work', href: '#process' },
   { label: 'Industries', href: '#industries' },
   { label: 'Architecture', href: '#stack' },
   { label: 'Contact', href: '#contact' },
@@ -10,7 +11,7 @@ const NAV_ITEMS = [
 const SOCIAL_LINKS = [
   { icon: Linkedin, href: '#', label: 'LinkedIn' },
   { icon: Github, href: '#', label: 'GitHub' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
+  { icon: Mail, href: 'mailto:hello@blackrockai.co', label: 'Email' },
 ];
 
 export function Footer() {
@@ -21,41 +22,60 @@ export function Footer() {
 
   return (
     <footer>
-      {/* Copper-tinted top border */}
-      <div className="h-px bg-gradient-to-r from-transparent via-copper-dim to-transparent" />
+      {/* Amber-tinted top border */}
+      <div className="h-px bg-gradient-to-r from-transparent via-amber-dim to-transparent" />
 
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-8">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Copyright */}
-          <p className="text-text-secondary text-sm font-body">
-            &copy; 2025 BlackRock AI
-          </p>
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          {/* Left: Branding */}
+          <div>
+            <p className="font-display font-bold text-lg text-text-primary mb-1">
+              BlackRock AI
+            </p>
+            <p className="text-text-secondary text-sm font-body mb-4">
+              AI Consulting &amp; Development
+            </p>
+            <p className="text-text-secondary/50 text-xs font-body">
+              &copy; {new Date().getFullYear()} BlackRock AI. All rights reserved.
+            </p>
+          </div>
 
-          {/* Nav Links */}
-          <nav className="flex gap-6">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollTo(item.href)}
-                className="text-text-secondary text-sm hover:text-copper transition-colors font-body"
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
+          {/* Center: Navigation */}
+          <div>
+            <p className="text-text-secondary/50 text-xs font-body uppercase tracking-widest mb-4">
+              Navigation
+            </p>
+            <nav className="flex flex-col gap-2.5">
+              {NAV_ITEMS.map((item) => (
+                <button
+                  key={item.href}
+                  onClick={() => scrollTo(item.href)}
+                  className="text-text-secondary text-sm hover:text-amber transition-colors font-body text-left"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+          </div>
 
-          {/* Social Links */}
-          <div className="flex gap-4">
-            {SOCIAL_LINKS.map((social) => (
-              <a
-                key={social.label}
-                href={social.href}
-                aria-label={social.label}
-                className="text-text-secondary hover:text-copper transition-colors"
-              >
-                <social.icon className="w-5 h-5" />
-              </a>
-            ))}
+          {/* Right: Connect */}
+          <div>
+            <p className="text-text-secondary/50 text-xs font-body uppercase tracking-widest mb-4">
+              Connect
+            </p>
+            <div className="flex flex-col gap-3">
+              {SOCIAL_LINKS.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  aria-label={social.label}
+                  className="inline-flex items-center gap-2.5 text-text-secondary hover:text-amber transition-colors text-sm font-body"
+                >
+                  <social.icon className="w-4 h-4" />
+                  {social.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

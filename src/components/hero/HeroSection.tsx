@@ -1,80 +1,64 @@
-import { useEffect, useRef } from 'react';
-
-const HERO_COPY = {
-  h1: 'Better decisions.',
-  h1_accent: 'Built.',
-  sub: 'We build systems that think.',
-  body: "We don\u2019t sell software\u2014we embed with organizations to unify their operations, automate what slows them down, and surface the clarity their leadership needs to act.",
-};
+import { motion } from 'framer-motion';
 
 export function HeroSection() {
-  const rockRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (rockRef.current) {
-        const scrolled = window.scrollY;
-        rockRef.current.style.transform = `translateY(${scrolled * 0.4}px)`;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-black-primary">
-      {/* --- LAYER 0: BACKGROUND ROCK --- */}
-      <div
-        ref={rockRef}
-        className="absolute inset-0 w-full h-full pointer-events-none z-0 flex items-center justify-center md:justify-end"
-      >
-        <div className="relative w-[80%] md:w-[50%] opacity-40 mix-blend-overlay md:mr-[-10%]">
-          {/* TODO: Replace with PNG (transparent bg) for cleaner blending */}
-          <img
-            src="/blackrock-ai-icon-transparent.jpg"
-            alt=""
-            aria-hidden="true"
-            className="w-full h-auto object-contain"
-          />
-          {/* Vignette — fade rock edges into background */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black-primary via-transparent to-black-primary" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black-primary via-transparent to-transparent" />
-        </div>
-      </div>
+    <section className="relative min-h-[100dvh] flex items-center justify-center pt-24 pb-12 overflow-hidden">
+      <div className="max-w-[800px] mx-auto px-6 md:px-12 text-center relative z-10">
+        {/* Eyebrow */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+          className="text-amber text-xs font-bold uppercase tracking-[0.25em] mb-6"
+        >
+          AI Consulting &amp; Development
+        </motion.p>
 
-      {/* --- LAYER 10: CONTENT --- */}
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 relative z-10">
-        <div className="max-w-4xl">
-          {/* Subhead with Copper Line */}
-          <div className="flex items-center gap-4 mb-8">
-            <div className="h-[2px] w-12 bg-copper" />
-            <span className="text-copper font-mono uppercase tracking-[0.2em] text-sm font-bold">
-              {HERO_COPY.sub}
-            </span>
-          </div>
+        {/* H1 */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.2, 0.8, 0.2, 1] }}
+          className="font-display font-extrabold text-5xl md:text-6xl lg:text-[72px] tracking-tight text-text-primary leading-[1.05] mb-6"
+        >
+          We Build Intelligent Systems That Scale
+        </motion.h1>
 
-          {/* Main Headline */}
-          <h1 className="text-6xl md:text-8xl font-extrabold text-text-primary leading-[0.9] tracking-[-0.05em] mb-8">
-            {HERO_COPY.h1} <br />
-            <span className="text-copper">{HERO_COPY.h1_accent}</span>
-          </h1>
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
+          className="text-text-secondary text-lg md:text-xl font-body leading-relaxed max-w-[600px] mx-auto mb-10"
+        >
+          From strategy to deployment &mdash; custom AI applications, industry CRMs,
+          and automation for companies that can&apos;t afford to get it wrong.
+        </motion.p>
 
-          {/* Body Copy */}
-          <p className="text-xl text-text-muted/80 max-w-xl leading-relaxed mb-12 border-l-2 border-white/10 pl-6">
-            {HERO_COPY.body}
-          </p>
+        {/* Dual CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
+        >
+          <a href="#contact" className="btn-amber">
+            Book a Discovery Call
+          </a>
+          <a href="#services" className="btn-outline">
+            See What We Build
+          </a>
+        </motion.div>
 
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row gap-5">
-            <a
-              href="#contact"
-              className="bg-copper text-white px-10 py-4 font-bold text-lg tracking-wide hover:bg-white hover:text-black-primary transition-all duration-200 inline-block"
-            >
-              Let&apos;s Talk
-            </a>
-          </div>
-        </div>
+        {/* Urgency line */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.9, ease: [0.2, 0.8, 0.2, 1] }}
+          className="text-text-secondary/60 text-sm font-body"
+        >
+          Currently accepting 2 new clients for Q1 2026
+        </motion.p>
       </div>
     </section>
   );

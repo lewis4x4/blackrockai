@@ -9,6 +9,7 @@ interface NavItem {
 
 const NAV_ITEMS: NavItem[] = [
   { label: 'What We Build', href: '#services' },
+  { label: 'How We Work', href: '#process' },
   { label: 'Industries', href: '#industries' },
   { label: 'Architecture', href: '#stack' },
   { label: 'Contact', href: '#contact' },
@@ -56,16 +57,16 @@ export function Header() {
             : 'bg-transparent'
         }`}
       >
-        <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 flex items-center justify-between h-16 md:h-[72px]">
+        <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 flex items-center justify-between h-36 md:h-44">
           {/* Logo — Icon + Wordmark */}
           <button
             onClick={() => scrollTo('#top')}
             className="flex items-center gap-0 hover:opacity-90 transition-opacity"
           >
             <img
-              src="/blackrock-ai-logo-dark-bg.jpg"
+              src="/blackrock-ai-logo-dark-bg.png"
               alt="BlackRock AI"
-              className="h-8 md:h-9 w-auto"
+              className="h-32 md:h-40 w-auto"
             />
           </button>
 
@@ -82,7 +83,7 @@ export function Header() {
             ))}
             <button
               onClick={() => scrollTo('#contact')}
-              className="btn-copper text-sm !py-2.5 !px-5"
+              className="btn-amber text-sm !py-2.5 !px-5"
             >
               Get Started
             </button>
@@ -131,7 +132,7 @@ export function Header() {
                     ease: [0.2, 0.8, 0.2, 1],
                   }}
                   onClick={() => scrollTo(item.href)}
-                  className="text-2xl font-display font-bold text-text-primary hover:text-copper transition-colors"
+                  className="text-2xl font-display font-bold text-text-primary hover:text-amber transition-colors"
                 >
                   {item.label}
                 </motion.button>
@@ -145,7 +146,7 @@ export function Header() {
                   ease: [0.2, 0.8, 0.2, 1],
                 }}
                 onClick={() => scrollTo('#contact')}
-                className="btn-copper mt-4"
+                className="btn-amber mt-4"
               >
                 Get Started
               </motion.button>

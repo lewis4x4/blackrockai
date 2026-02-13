@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
+import { Mail, Calendar, MapPin } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface ContactFormData {
@@ -32,27 +33,54 @@ export function ContactSection() {
     <section id="contact" className="section-pad">
       <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16" ref={ref}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          {/* Left: CTA */}
+          {/* Left: CTA + Contact Info */}
           <div className={`scroll-reveal ${isVisible ? 'visible' : ''}`}>
             <h2 className="font-display font-extrabold text-3xl md:text-4xl lg:text-[44px] tracking-tight text-text-primary mb-6 leading-tight">
-              Turn chaos into clarity.
+              Let&apos;s Build Something
             </h2>
 
-            <p className="text-text-secondary text-base md:text-lg font-body leading-relaxed mb-8">
-              Manual processes. Disconnected systems. Data that doesn&apos;t
-              talk. We find what&apos;s breaking and build platforms that make it
-              work together.
+            <p className="text-text-secondary text-base md:text-lg font-body leading-relaxed mb-4">
+              Tell us what&apos;s broken. We&apos;ll tell you how to fix it.
             </p>
 
-            <a href="#" className="btn-copper inline-block">
-              Book a Call
-            </a>
+            <p className="text-text-secondary/70 text-sm font-body leading-relaxed mb-8">
+              We work with 2&ndash;3 clients at a time so every project gets our full
+              attention. If we&apos;re not the right fit, we&apos;ll tell you that too.
+            </p>
+
+            {/* Direct Contact */}
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-amber" />
+                <a
+                  href="mailto:brian@blackrockai.co"
+                  className="text-text-secondary text-sm font-body hover:text-amber transition-colors"
+                >
+                  brian@blackrockai.co
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Calendar className="w-4 h-4 text-amber" />
+                <a
+                  href="#"
+                  className="text-amber text-sm font-body hover:underline"
+                >
+                  Book a 30-min call
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <MapPin className="w-4 h-4 text-amber" />
+                <span className="text-text-secondary text-sm font-body">
+                  Lake City, FL
+                </span>
+              </div>
+            </div>
           </div>
 
           {/* Right: Form */}
           <div className={`scroll-reveal ${isVisible ? 'visible' : ''}`}>
             {submitted ? (
-              <div className="slate-card p-8 md:p-10 flex items-center justify-center min-h-[320px]">
+              <div className="glass-card p-8 md:p-10 flex items-center justify-center min-h-[320px]">
                 <div className="text-center">
                   <p className="font-display font-bold text-xl text-text-primary mb-2">
                     We&apos;ll be in touch.
@@ -65,7 +93,7 @@ export function ContactSection() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="slate-card p-8 md:p-10 space-y-6"
+                className="glass-card p-8 md:p-10 space-y-6"
               >
                 <div>
                   <label className="block text-text-secondary text-xs uppercase tracking-widest font-body mb-3">
@@ -76,7 +104,7 @@ export function ContactSection() {
                     required
                     value={form.name}
                     onChange={(e) => updateField('name', e.target.value)}
-                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-copper transition-colors placeholder:text-[#555]"
+                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-amber transition-colors placeholder:text-[#555]"
                     placeholder="Your name"
                   />
                 </div>
@@ -90,7 +118,7 @@ export function ContactSection() {
                     required
                     value={form.email}
                     onChange={(e) => updateField('email', e.target.value)}
-                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-copper transition-colors placeholder:text-[#555]"
+                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-amber transition-colors placeholder:text-[#555]"
                     placeholder="you@company.com"
                   />
                 </div>
@@ -103,7 +131,7 @@ export function ContactSection() {
                     type="text"
                     value={form.company}
                     onChange={(e) => updateField('company', e.target.value)}
-                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-copper transition-colors placeholder:text-[#555]"
+                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-amber transition-colors placeholder:text-[#555]"
                     placeholder="Company name"
                   />
                 </div>
@@ -117,14 +145,18 @@ export function ContactSection() {
                     value={form.message}
                     onChange={(e) => updateField('message', e.target.value)}
                     rows={4}
-                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-copper transition-colors resize-none placeholder:text-[#555]"
-                    placeholder="Tell us what's on your mind"
+                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-amber transition-colors resize-none placeholder:text-[#555]"
+                    placeholder="What's the problem?"
                   />
                 </div>
 
-                <button type="submit" className="btn-copper w-full mt-2">
+                <button type="submit" className="btn-amber w-full mt-2">
                   Send Message
                 </button>
+
+                <p className="text-text-secondary/50 text-xs font-body text-center">
+                  We respond within 24 hours.
+                </p>
               </form>
             )}
           </div>

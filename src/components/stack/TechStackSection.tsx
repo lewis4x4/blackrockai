@@ -3,20 +3,29 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 interface TechGroup {
   category: string;
   items: string[];
+  note: string;
 }
 
 const TECH_STACK: TechGroup[] = [
   {
     category: 'Frontend',
-    items: ['React', 'TypeScript'],
+    items: ['React', 'TypeScript', 'Tailwind CSS', 'shadcn/ui'],
+    note: 'Component-driven, type-safe interfaces',
   },
   {
     category: 'Backend',
-    items: ['Supabase', 'PostgreSQL', 'Edge Functions'],
+    items: ['Supabase', 'PostgreSQL', 'Edge Functions', 'REST APIs'],
+    note: 'Real-time data with row-level security',
   },
   {
     category: 'AI',
-    items: ['Claude API', 'OpenAI'],
+    items: ['Claude API', 'OpenAI', 'Custom Models', 'RAG Pipelines'],
+    note: 'Production-grade AI, not toy demos',
+  },
+  {
+    category: 'Infrastructure',
+    items: ['Netlify', 'Cloudflare', 'n8n', 'GitHub Actions'],
+    note: 'Automated deploys and workflow orchestration',
   },
 ];
 
@@ -25,10 +34,9 @@ export function TechStackSection() {
 
   return (
     <section id="stack" className="section-pad">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16" ref={ref}>
         <h2
           className={`font-display font-extrabold text-3xl md:text-4xl lg:text-[48px] tracking-tight text-text-primary mb-3 scroll-reveal ${isVisible ? 'visible' : ''}`}
-          ref={ref}
         >
           The Architecture
         </h2>
@@ -36,26 +44,20 @@ export function TechStackSection() {
         <p
           className={`text-text-secondary text-lg font-body mb-12 md:mb-16 scroll-reveal ${isVisible ? 'visible' : ''}`}
         >
-          Real architecture&mdash;not no-code duct tape.
+          Real architecture &mdash; not no-code duct tape.
         </p>
 
-        {/* Blueprint / Schematic Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
-          {TECH_STACK.map((group, groupIndex) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
+          {TECH_STACK.map((group) => (
             <div
               key={group.category}
-              className={`scroll-reveal ${isVisible ? 'visible' : ''} relative`}
+              className={`scroll-reveal ${isVisible ? 'visible' : ''}`}
             >
-              {/* Connecting line (desktop only) */}
-              {groupIndex < TECH_STACK.length - 1 && (
-                <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-px border-t border-dashed border-border-subtle" />
-              )}
-
-              <div className="slate-card p-6 md:p-8">
+              <div className="glass-card p-6 md:p-8 h-full flex flex-col">
                 {/* Category Label */}
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="w-2 h-2 rounded-full bg-copper" />
-                  <span className="font-mono text-xs text-copper uppercase tracking-widest">
+                  <div className="w-2 h-2 rounded-full bg-amber" />
+                  <span className="font-mono text-xs text-amber uppercase tracking-widest">
                     {group.category}
                   </span>
                 </div>
@@ -63,7 +65,7 @@ export function TechStackSection() {
                 <div className="h-px bg-border-subtle mb-5" />
 
                 {/* Tech Items */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-4 flex-1">
                   {group.items.map((tech) => (
                     <span
                       key={tech}
@@ -73,6 +75,11 @@ export function TechStackSection() {
                     </span>
                   ))}
                 </div>
+
+                {/* Bottom note */}
+                <p className="text-text-secondary/50 text-xs font-body mt-auto">
+                  {group.note}
+                </p>
               </div>
             </div>
           ))}
