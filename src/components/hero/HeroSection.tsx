@@ -9,7 +9,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.2, 0.8, 0.2, 1] }}
-          className="text-amber text-xs font-bold uppercase tracking-[0.25em] mb-6"
+          className="text-amber text-sm font-bold uppercase tracking-[0.25em] mb-6"
         >
           AI Consulting &amp; Development
         </motion.p>

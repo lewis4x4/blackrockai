@@ -104,7 +104,7 @@ export function ContactSection() {
                     required
                     value={form.name}
                     onChange={(e) => updateField('name', e.target.value)}
-                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-amber transition-colors placeholder:text-[#555]"
+                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-amber transition-colors placeholder:text-text-secondary/60"
                     placeholder="Your name"
                   />
                 </div>
@@ -118,7 +118,7 @@ export function ContactSection() {
                     required
                     value={form.email}
                     onChange={(e) => updateField('email', e.target.value)}
-                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-amber transition-colors placeholder:text-[#555]"
+                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-amber transition-colors placeholder:text-text-secondary/60"
                     placeholder="you@company.com"
                   />
                 </div>
@@ -131,7 +131,7 @@ export function ContactSection() {
                     type="text"
                     value={form.company}
                     onChange={(e) => updateField('company', e.target.value)}
-                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-amber transition-colors placeholder:text-[#555]"
+                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-amber transition-colors placeholder:text-text-secondary/60"
                     placeholder="Company name"
                   />
                 </div>
@@ -145,7 +145,7 @@ export function ContactSection() {
                     value={form.message}
                     onChange={(e) => updateField('message', e.target.value)}
                     rows={4}
-                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-amber transition-colors resize-none placeholder:text-[#555]"
+                    className="w-full bg-transparent border-0 border-b border-border-subtle text-text-primary font-body text-sm pb-3 focus:outline-none focus:border-amber transition-colors resize-none placeholder:text-text-secondary/60"
                     placeholder="What's the problem?"
                   />
                 </div>

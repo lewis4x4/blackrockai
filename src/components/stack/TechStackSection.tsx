@@ -69,7 +69,7 @@ export function TechStackSection() {
                   {group.items.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1.5 rounded-md bg-[rgba(255,255,255,0.03)] border border-border-subtle text-sm font-mono text-text-secondary"
+                      className="px-3 py-1.5 rounded-md bg-[rgba(255,255,255,0.03)] border border-white/20 text-sm font-mono text-text-secondary"
                     >
                       {tech}
                     </span>

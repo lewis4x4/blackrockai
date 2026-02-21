@@ -51,11 +51,10 @@ export function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          isScrolled
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled
             ? 'bg-[rgba(28,28,28,0.92)] backdrop-blur-md border-b border-[rgba(255,255,255,0.06)]'
             : 'bg-transparent'
-        }`}
+          }`}
       >
         <div className="max-w-[1280px] mx-auto px-6 md:px-12 lg:px-16 flex items-center justify-between h-36 md:h-44">
           {/* Logo — Icon + Wordmark */}
@@ -76,7 +75,7 @@ export function Header() {
               <button
                 key={item.href}
                 onClick={() => scrollTo(item.href)}
-                className="text-sm text-text-secondary hover:text-text-primary transition-colors font-body"
+                className="text-sm text-text-secondary hover:text-text-primary transition-colors font-body py-2 px-3"
               >
                 {item.label}
               </button>

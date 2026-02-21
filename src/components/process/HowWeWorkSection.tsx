@@ -62,7 +62,7 @@ export function HowWeWorkSection() {
                 </div>
 
                 {/* Badge */}
-                <span className="inline-block text-amber text-xs font-bold uppercase tracking-widest mb-3">
+                <span className="inline-block text-amber text-sm font-bold uppercase tracking-widest mb-3">
                   {step.badge}
                 </span>
 
