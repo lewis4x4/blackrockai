@@ -1,4 +1,5 @@
 import { Linkedin, Github, Mail } from 'lucide-react';
+import { githubUrl, linkedInUrl, mailtoContact } from '@/lib/env';
 
 const NAV_ITEMS = [
   { label: 'What We Build', href: '#services' },
@@ -9,10 +10,10 @@ const NAV_ITEMS = [
 ];
 
 const SOCIAL_LINKS = [
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Github, href: '#', label: 'GitHub' },
-  { icon: Mail, href: 'mailto:hello@blackrockai.co', label: 'Email' },
-];
+  { icon: Linkedin, href: linkedInUrl || '#', label: 'LinkedIn' },
+  { icon: Github, href: githubUrl || '#', label: 'GitHub' },
+  { icon: Mail, href: mailtoContact(), label: 'Email' },
+] as const;
 
 export function Footer() {
   const scrollTo = (href: string) => {

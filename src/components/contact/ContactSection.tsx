@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Mail, Calendar, MapPin } from 'lucide-react';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { bookingUrl, contactEmail, contactFormEndpoint, mailtoContact } from '@/lib/env';
 
 interface ContactFormData {
   name: string;
@@ -20,8 +21,20 @@ export function ContactSection() {
     message: '',
   });
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (contactFormEndpoint) {
+      const response = await fetch(contactFormEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!response.ok) {
+        return;
+      }
+    }
+
     setSubmitted(true);
   };
 
@@ -53,17 +66,18 @@ export function ContactSection() {
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-amber" />
                 <a
-                  href="mailto:brian@blackrockai.co"
+                  href={mailtoContact()}
                   className="text-text-secondary text-sm font-body hover:text-amber transition-colors"
                 >
-                  brian@blackrockai.co
+                  {contactEmail}
                 </a>
               </div>
               <div className="flex items-center gap-3">
                 <Calendar className="w-4 h-4 text-amber" />
                 <a
-                  href="#"
+                  href={bookingUrl}
                   className="text-amber text-sm font-body hover:underline"
+                  {...(bookingUrl.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 >
                   Book a 30-min call
                 </a>
